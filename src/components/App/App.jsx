@@ -8,6 +8,7 @@ import { fetchContacts } from "../../redux/contactsOps";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Loading from "../Loading/Loading";
 import { selectError, selectLoading } from "../../redux/contactsSlice";
+import HomePage from "../../pages/HomePage/HomePage";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ export default function App() {
 
   return (
     <div className={css.box}>
-      <h1>Phonebook</h1>
+      <HomePage />
       <ContactForm />
       <SearchBox />
       {loading && <Loading>Loading contacts...</Loading>}
