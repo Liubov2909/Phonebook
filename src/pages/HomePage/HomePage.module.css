@@ -1,10 +1,28 @@
 .container {
   background-image: url(../../assets/img/img_phonebook.jpg);
-  /* display: flex; */
+  display: flex;
   width: 100%;
-  height: 269px;
+  height: 800px;
   border-radius: 30px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  padding-top: 10px;
+  margin-top: 10px; 
+    
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  padding: 0 50px;
+  font-size: 40px;
+}
+.text {
+  color: black;
+  font-size: 24px;
 }

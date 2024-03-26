@@ -1,12 +1,18 @@
 .nav {
   display: flex;
-  gap: 12px;
-  font-size: 24px;
-}
+  box-shadow: 0 2px 5px;
+  align-items: center;
+  background-color: rgb(210, 163, 237);
+  height: 60px;
+  padding: 0 50px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  }
 
 .link {
   text-decoration: none;
   color: black;
+  font-size: 24px;
 }
 
 .link:hover {

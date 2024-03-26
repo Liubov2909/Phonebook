@@ -1,8 +1,5 @@
 .box {
-  width: 430px;
-  border: 1.5px solid black;
-  border-radius: 4px;
-  padding: 12px;
+  border-radius: 6px;
   background-color: rgb(210, 163, 237);
 }
   

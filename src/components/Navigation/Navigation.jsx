@@ -16,6 +16,9 @@ export default function Navigation() {
         <NavLink to="/register" className={linkClass}>
           Register
         </NavLink>
+        <NavLink to="/login" className={linkClass}>
+          Login
+        </NavLink>
       </nav>
     </header>
   );
