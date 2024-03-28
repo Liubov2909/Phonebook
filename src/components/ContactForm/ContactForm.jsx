@@ -1,9 +1,8 @@
 import css from "./ContactForm.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsOps";
+import { addContact } from "../../redux/contacts/contactsOps";
 import * as Yup from "yup";
-import { useId } from "react";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -17,11 +16,7 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function ContactForm() {
-  const nameFieldId = useId();
-  const numberFieldIId = useId();
   const dispatch = useDispatch();
-
-  const initialValues = { name: "", number: "" };
 
   function handleSubmit(values, actions) {
     dispatch(addContact(values));
@@ -30,19 +25,14 @@ export default function ContactForm() {
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={{ name: "", number: "" }}
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
     >
       <Form className={css.form}>
         <div className={css.container}>
           <label className={css.label}>Name</label>
-          <Field
-            className={css.input}
-            type="text"
-            name="name"
-            id={nameFieldId}
-          />
+          <Field className={css.input} type="text" name="name" />
           <ErrorMessage name="name" as="span" className="css.error" />
         </div>
         <div className={css.container}>
@@ -52,9 +42,8 @@ export default function ContactForm() {
             className={css.input}
             type="tel"
             name="number"
-            id={numberFieldIId}
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-            placeholder="000-000-0000"
+            pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"
+            placeholder="000-00-00"
           />
           <ErrorMessage name="number" as="span" className="css.error" />
         </div>

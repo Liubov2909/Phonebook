@@ -2,7 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import * as Yup from "yup";
-import { useId } from "react";
+
 import css from "../RegisterForm/RegisterForm.module.css";
 
 const validationSchema = Yup.object().shape({
@@ -18,12 +18,7 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function RegisterForm() {
-  const nameFieldId = useId();
-  const emailFieldId = useId();
-  const passwordFieldIId = useId();
   const dispatch = useDispatch();
-
-  const initialValues = { name: "", email: "", password: "" };
 
   function handleSubmit(values, actions) {
     dispatch(register(values));
@@ -32,40 +27,25 @@ export default function RegisterForm() {
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={{ name: "", email: "", password: "" }}
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
     >
       <Form className={css.form}>
         <div className={css.container}>
           <label className={css.label}>Name</label>
-          <Field
-            className={css.input}
-            type="text"
-            name="name"
-            id={nameFieldId}
-          />
+          <Field className={css.input} type="text" name="name" />
           <ErrorMessage name="name" as="span" className="css.error" />
         </div>
         <div className={css.container}>
           <label className={css.label}>Email</label>
-          <Field
-            className={css.input}
-            type="text"
-            name="email"
-            id={emailFieldId}
-          />
+          <Field className={css.input} type="text" name="email" />
           <ErrorMessage name="email" as="span" className="css.error" />
         </div>
         <div className={css.container}>
           {" "}
           <label className={css.label}>Password</label>
-          <Field
-            className={css.input}
-            type="text"
-            name="password"
-            id={passwordFieldIId}
-          />
+          <Field className={css.input} type="text" name="password" />
           <ErrorMessage name="password" as="span" className="css.error" />
         </div>
         <button className={css.btn} type="submit">
