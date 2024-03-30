@@ -35,7 +35,7 @@ export default function LoginForm() {
         <div className={css.container}>
           {" "}
           <label className={css.label}>Password</label>
-          <Field className={css.input} type="text" name="password" />
+          <Field className={css.input} type="password" name="password" />
           <ErrorMessage name="password" as="span" className="css.error" />
         </div>
         <button className={css.btn} type="submit">
