@@ -3,6 +3,8 @@
   flex-direction: column;
   margin-top: 6px;
   font-style: 16px;
+  align-items: center;
+  justify-content: center;
 }
 
 .label {

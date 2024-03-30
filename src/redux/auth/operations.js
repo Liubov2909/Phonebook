@@ -13,9 +13,9 @@ const clearAuthHeader = () => {
 
 export const register = createAsyncThunk(
   "auth/register",
-  async (userInfo, thunkAPI) => {
+  async (user, thunkAPI) => {
     try {
-      const response = await axios.post("/users/signup", userInfo);
+      const response = await axios.post("/users/signup", user);
       console.log(response);
       setAuthHeader(response.data.token);
       return response.data;
@@ -27,9 +27,9 @@ export const register = createAsyncThunk(
 
 export const login = createAsyncThunk(
   "auth/login",
-  async (userInfo, thunkAPI) => {
+  async (user, thunkAPI) => {
     try {
-      const response = await axios.post("/users/login", userInfo);
+      const response = await axios.post("/users/login", user);
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
@@ -46,3 +46,21 @@ export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+export const refreshUser = createAsyncThunk(
+  "auth/refresh",
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue("Unable to fetch user");
+    }
+    try {
+      setAuthHeader(persistedToken);
+      const res = await axios.get("/users/me");
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
