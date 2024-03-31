@@ -2,16 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const filtersSlice = createSlice({
   name: 'filters',
-  initialState: "",
-
+  initialState: {
+    name: '',
+  },
   reducers: {
-    changeFilter: {
-      reduser(_, action) {
-        return action.payload;
-      },
-      prepare(filter) {
-        return { payload: filter };
-      },
+    changeFilter(state, action) {
+      state.name = action.payload;
     },
   },
 });

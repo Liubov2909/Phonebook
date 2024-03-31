@@ -6,4 +6,9 @@
 
 .username {
   font-weight: 700;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #646cff;
 }

@@ -27,5 +27,28 @@
 }
 .btn {
   border: 1px solid black;
+  background-color: #646cff;
 }
 
+
+.text {
+  align-items: center;
+  color: black;
+  font-size: 20px;
+}
+
+.paragr {
+  align-items: center;
+  color: black;
+  font-size: 16px;
+}
+
+.yesBtn {
+  margin-right: 10px;
+  background-color: #646cff;
+}
+
+.noBtn {
+  margin-left: 10px;
+  background-color: #646cff;
+}
