@@ -8,10 +8,10 @@ import { selectIsRefreshing } from "../../redux/auth/selectors";
 import { RestrictedRoute } from "../RestrictedRoute";
 import { PrivateRoute } from "../PrivateRoute";
 
-const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
-const RegisterPage = lazy(() => import("../../pages/RegisterPage"));
-const LoginPage = lazy(() => import("../../pages/LoginPage"));
-const ContactsPage = lazy(() => import("../../pages/ContactsPage"));
+const Home = lazy(() => import("../../pages/Home/Home"));
+const Registration = lazy(() => import("../../pages/Registration"));
+const Login = lazy(() => import("../../pages/Login"));
+const Contacts = lazy(() => import("../../pages/Contacts"));
 
 export default function App() {
   const { isRefreshing } = useSelector(selectIsRefreshing);
@@ -29,12 +29,12 @@ export default function App() {
         ) : (
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
-              <Route path="/" element={<HomePage />} />
+              <Route path="/" element={<Home />} />
               <Route
                 path="/register"
                 element={
                   <RestrictedRoute
-                    component={<RegisterPage />}
+                    component={<Registration />}
                     redirectTo="/contacts"
                   />
                 }
@@ -43,7 +43,7 @@ export default function App() {
                 path="/login"
                 element={
                   <RestrictedRoute
-                    component={<LoginPage />}
+                    component={<Login />}
                     redirectTo="/contacts"
                   />
                 }
@@ -51,10 +51,7 @@ export default function App() {
               <Route
                 path="/contacts"
                 element={
-                  <PrivateRoute
-                    component={<ContactsPage />}
-                    redirectTo="/login"
-                  />
+                  <PrivateRoute component={<Contacts />} redirectTo="/login" />
                 }
               />
             </Routes>
