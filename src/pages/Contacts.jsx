@@ -8,7 +8,7 @@ import { selectLoading } from "../redux/contacts/selectors";
 
 import { fetchContacts } from "../redux/contacts/operations";
 
-export default function ContactsPage() {
+export default function Contacts() {
   const dispatch = useDispatch();
   const loading = useSelector(selectLoading);
 

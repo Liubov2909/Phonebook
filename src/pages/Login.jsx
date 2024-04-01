@@ -1,6 +1,6 @@
 import LoginForm from "../components/LoginForm/LoginForm";
 
-export default function LoginPage() {
+export default function Login() {
   return (
     <div>
       <h3>Please enter your login</h3>
